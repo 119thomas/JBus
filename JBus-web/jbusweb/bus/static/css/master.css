@@ -1,0 +1,12 @@
+h1 {
+  font-family: "Lato", sans-serif;
+}
+
+.lato {
+  font-family: "Lato", sans-serif;
+}
+
+.content {
+  margin: 0 auto; /* this will center the page */
+  width: 90%; /*  use your width here */
+}

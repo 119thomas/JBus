@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<script src="{% static 'js/master.js' %}"></script>
+<h1 class="my-5"></h1>
+{% for route in object_list %}
+<div class="card my-3">
+  <div class="card-header">{{ route.title }}</div>
+  <div class="card-body">
+    <strong>{{ route.stops.count }} total stops</strong>
+    <strong id="bus_count"></strong>
+  </div>
+  <div class="card-footer">
+    <a href="#" class="btn-sm btn-warning text-right">Display on map</a>
+    <a href="#" class="btn-sm btn-primary text-right">Show full schedule</a>
+  </div>
+</div>
+
+{% endfor %} {% endblock %}
