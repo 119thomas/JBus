@@ -15,7 +15,7 @@ struct stop: Hashable {
     var stopId: String
 }
 
-struct shuttle {
+struct shuttle: Hashable {
     var title: String
     var color: UIColor
     var oppositeColor: UIColor
@@ -27,10 +27,11 @@ class brains: NSObject, XMLParserDelegate {
     private var configParser: XMLParser?, tagParser: XMLParser?, predictionParser: XMLParser?
     private var shuttles = [shuttle]()
     private var routeStops = [stop]()
-    private var routeTags = [String](), minutes = [String]()
+    private var arrivals = [(String, Int)]()
+    private var routeTags = [String]()
     private var agencyTag: String?, routeTitle: String?, routeColor: String?,
                 routeOppositeColor: String?, routeTag: String?, stopTag: String?,
-                stopTitle: String?, stopId: String?
+                stopTitle: String?, stopId: String?, arrivalTime: String?
     
     /* On initialization we will create an array of shuttles. This will consist of
     first setting our agency tag (This means our NextBus data will be specifically
@@ -40,42 +41,36 @@ class brains: NSObject, XMLParserDelegate {
     override init() {
         super.init()
         agencyTag = "umd"
+    }
+    
+    func execute() {
         setRouteTags()
         configRoutes()
     }
     
-    func printShuttles() {
-        if shuttles.isEmpty {
-            print("its empty :(")
+    func printShuttle(shuttle: shuttle) {
+        print("title: \(shuttle.title)\ncolor: \(shuttle.color)\nopposite color: \(shuttle.oppositeColor)\nroute tag: \(shuttle.routeTag)")
+        print("~~~~stops~~~~:")
+        for stop in shuttle.stops {
+            print("title: \(stop.title), tag: \(stop.tag), stopId: \(stop.stopId)")
+            
+            let predictions = requestPredictions(stop: stop)
+            print("prediction count: \(predictions.count)")
+//            for prediction in predictions {
+//                print(prediction)
+//            }
         }
-        for shuttle in shuttles {
-            print("\(shuttle.title)\n\(shuttle.color)\n\(shuttle.oppositeColor)\n\(shuttle.routeTag)")
-            print("stops:")
-            for stop in shuttle.stops {
-                print("title: \(stop.title), tag: \(stop.tag), stopId: \(stop.stopId)")
-            }
-            print("")
-        }
+        print("")
     }
     
+    /* Returns a list of every shuttle currently running at UMD */
     func getShuttles() -> [shuttle] {
         return shuttles
     }
     
-    
-    func requestPredictions(shuttle: shuttle, stop: stop) {
-        predictionParser = XMLParser(contentsOf: URL(string:"http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=\(agencyTag!)&stopId=\(stop.stopId)")!)!
-        configParser!.delegate = self
-        configParser!.parse()
-    }
-    
-    /* Parses the XML for each routeTag in our list. */
-    private func configRoutes() {
-        for routeTag in routeTags {
-            configParser = XMLParser(contentsOf: URL(string:"http://webservices.nextbus.com/service/publicXMLFeed?command=routeConfig&a=\(agencyTag!)&r=\(routeTag)")!)!
-            configParser!.delegate = self
-            configParser!.parse()
-        }
+    /* Returns a list of stops for the given UMD shuttle */
+    func getStops(shuttle: shuttle) -> [stop] {
+        return shuttle.stops
     }
     
     /* Create a list of all the availible 'route tags'. Before we can get any information
@@ -88,14 +83,35 @@ class brains: NSObject, XMLParserDelegate {
         tagParser!.parse()
     }
     
-    /* Delegate function(s) */
+    /* Parses the XML for each routeTag in our list. */
+    private func configRoutes() {
+        for routeTag in routeTags {
+            configParser = XMLParser(contentsOf: URL(string:"http://webservices.nextbus.com/service/publicXMLFeed?command=routeConfig&a=\(agencyTag!)&r=\(routeTag)")!)!
+            configParser!.delegate = self
+            configParser!.parse()
+        }
+    }
+    
+    /* Returns a list of strings that represent the amount of time until the
+     next shuttle arrives at the provided stop */
+    func requestPredictions(stop: stop) -> [(String, Int)] {
+        arrivals.removeAll()
+        predictionParser = XMLParser(contentsOf: URL(string:"http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=\(agencyTag!)&stopId=\(stop.stopId)")!)!
+        predictionParser!.delegate = self
+        self.predictionParser!.parse()
+        
+        // does prediction parser.parse ALWAYS finish before we return arrivals??
+        // we should sort arrivals before we return it
+        return arrivals
+    }
+    
+    /* Delegate function(s); DO NOT MAKE PRIVATE */
     
     /* Parses the XML document looking for the key didStartElements: tag, route, stop, minutes=
     These keywords represent the 'key' in our attributes dictionary that will be used to extract
     a 'value', which represents important data in the XML (i.e. the name of a shuttle or the
     time until it's arrival at a particualar stop) */
-    private func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         for attribute in attributeDict {
             switch parser {
                 case tagParser:
@@ -114,15 +130,24 @@ class brains: NSObject, XMLParserDelegate {
                     }
                     else if(elementName == "stop") {
                         switch attribute.key {
-                            case "tag": stopTag = attribute.value
+                        case "tag": stopTag = attribute.value
                             case "title": stopTitle = attribute.value
                             case "stopId": stopId = attribute.value
                             default: break
                         }
                     }
                 case predictionParser:
-                    if(attribute.key == "minutes=") {
-                        minutes.append(attribute.key)
+                    switch elementName {
+                        case "predictions":
+                            if(attribute.key == "routeTitle") {
+                                routeTitle = attribute.value
+                            }
+                        case "prediction":
+                            
+                            if(attribute.key == "minutes") {
+                                arrivalTime = attribute.value
+                            }
+                        default: break
                     }
                 default: break
             }
@@ -133,7 +158,7 @@ class brains: NSObject, XMLParserDelegate {
      this function where we will create a new stop object to represent the data.
      After we create the new stop, we will reset the data to nil; this will prevent
      the parser from reading incorect stop elements in the XML */
-    private func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if(parser == configParser && elementName == "stop") {
             if(stopTag != nil && stopTitle != nil && stopId != nil) {
                 let newStop = stop(tag: stopTag!, title: stopTitle!, stopId: stopId!)
@@ -141,18 +166,30 @@ class brains: NSObject, XMLParserDelegate {
                 stopTag = nil; stopTitle = nil; stopId = nil
             }
         }
+        if(parser == predictionParser && elementName == "prediction") {
+            if(arrivalTime != nil) {
+                arrivals.append((routeTitle!, Int(arrivalTime!)!))
+                arrivalTime = nil
+            }
+        }
     }
     
     /* This function will be called after a configParser finishes reading a specific
     shuttle's XML file. Once the file has been read and the data extracted, we will create
     a new shuttle object to represent that data. */
-    private func parserDidEndDocument(_ parser: XMLParser) {
+    func parserDidEndDocument(_ parser: XMLParser) {
         if(parser == configParser) {
             let color = UIColor(hexString: "#\(routeColor ?? "fffff")ff")
             let oppositeColor = UIColor(hexString: "#\(routeOppositeColor ?? "fffff")ff")
             let newShuttle = shuttle(title: routeTitle ?? "", color: color!, oppositeColor: oppositeColor!, routeTag: routeTag ?? "", stops: routeStops)
             shuttles.append(newShuttle)
+            routeStops.removeAll()
         }
+    }
+    
+    /* Failed to parse XML */
+    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        NSLog("failure error: \(parseError)")
     }
 }
 
