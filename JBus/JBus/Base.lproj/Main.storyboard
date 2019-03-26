@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hYc-xr-Ypb">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,93 +10,89 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Search-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="JBus" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oca-Rk-BcY">
-                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                            <tabBar contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ts6-Xr-QKM" colorLabel="IBBuiltInLabel-Gray">
-                                <rect key="frame" x="0.0" y="729" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <rect key="contentStretch" x="1" y="1" width="0.0" height="1"/>
-                                <items>
-                                    <tabBarItem tag="100" title="Routes" image="icons8-bus-filled-50" landscapeImage="icons8-bus-filled-50" id="Wb0-qK-CuX" userLabel="Routes" colorLabel="IBBuiltInLabel-Green">
-                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                    </tabBarItem>
-                                    <tabBarItem title="Favorites" image="icons8-star-50" id="yAg-zo-VH9" userLabel="Favorites">
-                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                    </tabBarItem>
-                                    <tabBarItem title="Search" image="icons8-search-50" id="SM5-oO-OM5" userLabel="Search">
-                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                    </tabBarItem>
-                                    <tabBarItem title="Map" image="icons8-google-maps-50" id="FQf-1v-CqM" userLabel="Map">
-                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                    </tabBarItem>
-                                </items>
-                                <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tabBar>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="icons8-search-50" id="Qzb-HK-xgw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.74384236453201"/>
+            <point key="canvasLocation" x="1980" y="-565"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="xrP-sc-Yrk">
+        <!--Favorites-->
+        <scene sceneID="sg0-1F-VAJ">
             <objects>
-                <viewController id="VTz-pN-9EZ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EXg-9j-V9u">
+                <viewController id="nWY-Fd-3QL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vyL-sE-15O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="frb-Pa-xdQ"/>
+                        <viewLayoutGuide key="safeArea" id="bDf-ud-Qki"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="icons8-star-50" id="K2L-Vt-fn9"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hUy-Gp-ZCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ibg-8P-4va" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1143" y="134"/>
+            <point key="canvasLocation" x="1196" y="194"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="N3u-rl-22X">
+        <!--Map-->
+        <scene sceneID="pkW-Lx-Cfp">
             <objects>
-                <viewController id="Y15-cu-0dz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DAn-ai-D5k">
+                <viewController id="Yx2-0k-8CZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v38-Ka-A4L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="JlP-jL-UF5"/>
+                        <viewLayoutGuide key="safeArea" id="oeI-nH-9wt"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="icons8-google-maps-50" id="UfN-vZ-CMg"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RCK-va-QUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pVr-7r-da8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1142" y="789"/>
+            <point key="canvasLocation" x="1980" y="194"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Yv1-dU-ib1">
+        <!--Routes-->
+        <scene sceneID="G0P-Qv-JSk">
             <objects>
-                <viewController id="aEz-Of-4fS" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jdH-fo-S1B">
+                <viewController id="BJU-kr-lrE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mMZ-gS-bto">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="UGv-DW-0Up"/>
+                        <viewLayoutGuide key="safeArea" id="kDh-4z-oyI"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Routes" image="icons8-bus-filled-50" selectedImage="icons8-bus-filled-50" id="J0z-Bc-yQH"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0p2-Yk-axW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GIh-S3-TSe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1142" y="-512"/>
+            <point key="canvasLocation" x="1196" y="-565"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="R7z-5S-Hg4">
+            <objects>
+                <tabBarController id="hYc-xr-Ypb" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7oX-Uc-ihJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BJU-kr-lrE" kind="relationship" relationship="viewControllers" id="fP9-gG-3Bx"/>
+                        <segue destination="nWY-Fd-3QL" kind="relationship" relationship="viewControllers" id="cSA-px-v3M"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="JaO-aK-iSV"/>
+                        <segue destination="Yx2-0k-8CZ" kind="relationship" relationship="viewControllers" id="P1H-Ac-4Qd"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3jr-vn-CNq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="242" y="-202"/>
         </scene>
     </scenes>
     <resources>

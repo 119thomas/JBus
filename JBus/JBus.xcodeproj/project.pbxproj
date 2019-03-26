@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7226505A220F69C7003427A6 /* Shuttle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72265059220F69C7003427A6 /* Shuttle.swift */; };
 		7226505C220F7FBD003427A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7226505B220F7FBD003427A6 /* Assets.xcassets */; };
+		7274FDB8223C239200C935AC /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274FDB7223C239200C935AC /* model.swift */; };
 		72DA222E220CB38A005676B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DA222D220CB38A005676B3 /* AppDelegate.swift */; };
 		72DA2230220CB38A005676B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DA222F220CB38A005676B3 /* MainViewController.swift */; };
 		72DA2233220CB38A005676B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72DA2231220CB38A005676B3 /* Main.storyboard */; };
@@ -27,8 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		72265059220F69C7003427A6 /* Shuttle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuttle.swift; sourceTree = "<group>"; };
 		7226505B220F7FBD003427A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7274FDB7223C239200C935AC /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		72DA222A220CB38A005676B3 /* JBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72DA222D220CB38A005676B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72DA222F220CB38A005676B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -84,8 +84,8 @@
 				72DA2231220CB38A005676B3 /* Main.storyboard */,
 				7226505B220F7FBD003427A6 /* Assets.xcassets */,
 				72DA2236220CB38A005676B3 /* LaunchScreen.storyboard */,
-				72265059220F69C7003427A6 /* Shuttle.swift */,
 				72DA2239220CB38A005676B3 /* Info.plist */,
+				7274FDB7223C239200C935AC /* model.swift */,
 			);
 			path = JBus;
 			sourceTree = "<group>";
@@ -206,7 +206,7 @@
 			files = (
 				72DA2230220CB38A005676B3 /* MainViewController.swift in Sources */,
 				72DA222E220CB38A005676B3 /* AppDelegate.swift in Sources */,
-				7226505A220F69C7003427A6 /* Shuttle.swift in Sources */,
+				7274FDB8223C239200C935AC /* model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
