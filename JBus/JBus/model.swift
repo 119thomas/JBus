@@ -41,26 +41,8 @@ class brains: NSObject, XMLParserDelegate {
     override init() {
         super.init()
         agencyTag = "umd"
-    }
-    
-    func execute() {
         setRouteTags()
         configRoutes()
-    }
-    
-    func printShuttle(shuttle: shuttle) {
-        print("title: \(shuttle.title)\ncolor: \(shuttle.color)\nopposite color: \(shuttle.oppositeColor)\nroute tag: \(shuttle.routeTag)")
-        print("~~~~stops~~~~:")
-        for stop in shuttle.stops {
-            print("title: \(stop.title), tag: \(stop.tag), stopId: \(stop.stopId)")
-            
-            let predictions = requestPredictions(stop: stop)
-            print("prediction count: \(predictions.count)")
-//            for prediction in predictions {
-//                print(prediction)
-//            }
-        }
-        print("")
     }
     
     /* Returns a list of every shuttle currently running at UMD */
@@ -80,11 +62,11 @@ class brains: NSObject, XMLParserDelegate {
     private func setRouteTags() {
         tagParser = XMLParser(contentsOf: URL(string:"http://webservices.nextbus.com/service/publicXMLFeed?command=routeList&a=\(agencyTag!)")!)!
         tagParser!.delegate = self
-        tagParser!.parse()
+        tagParser?.parse()
     }
     
     /* Parses the XML for each routeTag in our list. */
-    private func configRoutes() {
+    func configRoutes() {
         for routeTag in routeTags {
             configParser = XMLParser(contentsOf: URL(string:"http://webservices.nextbus.com/service/publicXMLFeed?command=routeConfig&a=\(agencyTag!)&r=\(routeTag)")!)!
             configParser!.delegate = self
@@ -98,10 +80,8 @@ class brains: NSObject, XMLParserDelegate {
         arrivals.removeAll()
         predictionParser = XMLParser(contentsOf: URL(string:"http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=\(agencyTag!)&stopId=\(stop.stopId)")!)!
         predictionParser!.delegate = self
-        self.predictionParser!.parse()
-        
-        // does prediction parser.parse ALWAYS finish before we return arrivals??
-        // we should sort arrivals before we return it
+        predictionParser!.parse()
+        arrivals.sort(by: {$0.1 < $1.1})
         return arrivals
     }
     

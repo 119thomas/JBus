@@ -10,16 +10,11 @@ import XCTest
 @testable import JBus
 
 class JBusTests: XCTestCase {
-    let pinky = brains()
     
     func testParseShuttleNumbers() {
+        let pinky = brains()
+        
         print("TESTING")
-        
-        let queue = DispatchQueue(label: "Q")
-        queue.sync {
-            pinky.execute()
-        }
-        
         let universityview = pinky.getShuttles()[15]
         let stops = pinky.getStops(shuttle: universityview)
         let predictions = pinky.requestPredictions(stop: stops[0])
