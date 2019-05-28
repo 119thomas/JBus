@@ -13,6 +13,8 @@ struct stop: Hashable {
     var tag: String
     var title: String
     var stopId: String
+    var lat: Double
+    var lon: Double
 }
 
 struct shuttle: Hashable {
@@ -30,14 +32,14 @@ class brains: NSObject, XMLParserDelegate {
     private var arrivals = [(String, Int)]()
     private var routeTags = [String]()
     private var agencyTag: String?, routeTitle: String?, routeColor: String?,
-                routeOppositeColor: String?, routeTag: String?, stopTag: String?,
-                stopTitle: String?, stopId: String?, arrivalTime: String?
+    routeOppositeColor: String?, routeTag: String?, stopTag: String?,
+    stopTitle: String?, stopId: String?, arrivalTime: String?,lon:Double?, lat:Double?
     
     /* On initialization we will create an array of shuttles. This will consist of
-    first setting our agency tag (This means our NextBus data will be specifically
-    retrieved for The University of Maryland shuttle system). Next we need to
-    retrieve the route tags for each bus currently operating. Once we do this, we
-    can generate a new shuttle object for each tag, giving each one its proper attributes */
+     first setting our agency tag (This means our NextBus data will be specifically
+     retrieved for The University of Maryland shuttle system). Next we need to
+     retrieve the route tags for each bus currently operating. Once we do this, we
+     can generate a new shuttle object for each tag, giving each one its proper attributes */
     override init() {
         super.init()
         agencyTag = "umd"
@@ -88,48 +90,50 @@ class brains: NSObject, XMLParserDelegate {
     /* Delegate function(s); DO NOT MAKE PRIVATE */
     
     /* Parses the XML document looking for the key didStartElements: tag, route, stop, minutes=
-    These keywords represent the 'key' in our attributes dictionary that will be used to extract
-    a 'value', which represents important data in the XML (i.e. the name of a shuttle or the
-    time until it's arrival at a particualar stop) */
+     These keywords represent the 'key' in our attributes dictionary that will be used to extract
+     a 'value', which represents important data in the XML (i.e. the name of a shuttle or the
+     time until it's arrival at a particualar stop) */
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         for attribute in attributeDict {
             switch parser {
-                case tagParser:
-                    if(attribute.key == "tag") {
-                        routeTags.append(attribute.value)
+            case tagParser:
+                if(attribute.key == "tag") {
+                    routeTags.append(attribute.value)
+                }
+            case configParser:
+                if(elementName == "route") {
+                    switch attribute.key {
+                    case "tag": routeTag = attribute.value
+                    case "title": routeTitle = attribute.value
+                    case "color": routeColor = attribute.value
+                    case "oppositeColor": routeOppositeColor = attribute.value
+                    default: break
                     }
-                case configParser:
-                    if(elementName == "route") {
-                        switch attribute.key {
-                            case "tag": routeTag = attribute.value
-                            case "title": routeTitle = attribute.value
-                            case "color": routeColor = attribute.value
-                            case "oppositeColor": routeOppositeColor = attribute.value
-                            default: break
-                        }
+                }
+                else if(elementName == "stop") {
+                    switch attribute.key {
+                    case "tag": stopTag = attribute.value
+                    case "title": stopTitle = attribute.value
+                    case "stopId": stopId = attribute.value
+                    case "lat": lat = Double(attribute.value)
+                    case "lon": lon = Double(attribute.value)
+                    default: break
                     }
-                    else if(elementName == "stop") {
-                        switch attribute.key {
-                        case "tag": stopTag = attribute.value
-                            case "title": stopTitle = attribute.value
-                            case "stopId": stopId = attribute.value
-                            default: break
-                        }
+                }
+            case predictionParser:
+                switch elementName {
+                case "predictions":
+                    if(attribute.key == "routeTitle") {
+                        routeTitle = attribute.value
                     }
-                case predictionParser:
-                    switch elementName {
-                        case "predictions":
-                            if(attribute.key == "routeTitle") {
-                                routeTitle = attribute.value
-                            }
-                        case "prediction":
-                            
-                            if(attribute.key == "minutes") {
-                                arrivalTime = attribute.value
-                            }
-                        default: break
+                case "prediction":
+                    
+                    if(attribute.key == "minutes") {
+                        arrivalTime = attribute.value
                     }
                 default: break
+                }
+            default: break
             }
         }
     }
@@ -141,7 +145,7 @@ class brains: NSObject, XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if(parser == configParser && elementName == "stop") {
             if(stopTag != nil && stopTitle != nil && stopId != nil) {
-                let newStop = stop(tag: stopTag!, title: stopTitle!, stopId: stopId!)
+                let newStop = stop(tag: stopTag!, title: stopTitle!, stopId: stopId!, lat:lat!,lon:lon!)
                 routeStops.append(newStop)
                 stopTag = nil; stopTitle = nil; stopId = nil
             }
@@ -155,8 +159,8 @@ class brains: NSObject, XMLParserDelegate {
     }
     
     /* This function will be called after a configParser finishes reading a specific
-    shuttle's XML file. Once the file has been read and the data extracted, we will create
-    a new shuttle object to represent that data. */
+     shuttle's XML file. Once the file has been read and the data extracted, we will create
+     a new shuttle object to represent that data. */
     func parserDidEndDocument(_ parser: XMLParser) {
         if(parser == configParser) {
             let color = UIColor(hexString: "#\(routeColor ?? "fffff")ff")
@@ -176,9 +180,9 @@ class brains: NSObject, XMLParserDelegate {
 /* UIColor Extension */
 
 /* Converts hex value to UIColor
-    Extension from:
-    https://www.hackingwithswift.com/example-code/uicolor/how-to-convert-a-hex-color-to-a-uicolor
-    props to: Paul Hudson, https://www.hackingwithswift.com/about */
+ Extension from:
+ https://www.hackingwithswift.com/example-code/uicolor/how-to-convert-a-hex-color-to-a-uicolor
+ props to: Paul Hudson, https://www.hackingwithswift.com/about */
 extension UIColor {
     public convenience init?(hexString: String) {
         let r, g, b, a: CGFloat

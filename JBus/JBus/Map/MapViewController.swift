@@ -15,6 +15,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate  {
     // You don't need to modify the default init(nibName:bundle:) method.
     let locationManager = CLLocationManager()
     var lastLocation = CLLocation.init()
+    let pinky = brains()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +36,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate  {
         coder.reverseGeocodeCoordinate(lastLocation.coordinate) { response , error in
             marker.title=response?.firstResult()?.locality
         }
-//
-//        marker.snippet = "test"
+        //
+        //        marker.snippet = "test"
         marker.map = mapView
+        for shuttle in pinky.getShuttles(){
+            let stops = pinky.getStops(shuttle: shuttle);
+            for stop in stops{
+                print("123")
+                let sMarker = GMSMarker();
+                let latitude: CLLocationDegrees = stop.lat
+                let longitude: CLLocationDegrees = stop.lon
+                sMarker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude);
+                sMarker.map = mapView
+            }
+        }
+        
         
     }
     
@@ -62,8 +75,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate  {
     func locationManager(_ manager: CLLocationManager,  didUpdateLocations locations: [CLLocation]) {
         //        print(locations)
         if (lastLocation != locations.last){
-            loadView()
             lastLocation = locations.last!
+            loadView()
             
         }
         return
