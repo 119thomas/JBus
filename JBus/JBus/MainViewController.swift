@@ -7,10 +7,20 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainViewController: UIViewController {
+<<<<<<< HEAD
 
+=======
+    
+  
+    
+>>>>>>> f144cec6af08acaeb9e18807bf5472c8889b0524
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+      
     }
+    
 }

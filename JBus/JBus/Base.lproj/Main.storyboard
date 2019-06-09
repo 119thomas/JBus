@@ -73,8 +73,8 @@
         <!--Map-->
         <scene sceneID="pkW-Lx-Cfp">
             <objects>
-                <viewController id="Yx2-0k-8CZ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="v38-Ka-A4L">
+                <viewController id="Yx2-0k-8CZ" customClass="MapViewController" customModule="JBus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v38-Ka-A4L" customClass="GMSMapView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
