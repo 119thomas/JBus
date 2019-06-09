@@ -121,12 +121,8 @@
 		72DA222C220CB38A005676B3 /* JBus */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				726D502E225E62A40090780E /* Controllers */,
-=======
 				C13F147022976E8B00EAD696 /* Map */,
 				726D502E225E62A40090780E /* Route */,
->>>>>>> f144cec6af08acaeb9e18807bf5472c8889b0524
 				72DA2231220CB38A005676B3 /* Main.storyboard */,
 				72DA222D220CB38A005676B3 /* AppDelegate.swift */,
 				7226505B220F7FBD003427A6 /* Assets.xcassets */,
