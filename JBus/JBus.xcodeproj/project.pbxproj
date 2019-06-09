@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7226505C220F7FBD003427A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7226505B220F7FBD003427A6 /* Assets.xcassets */; };
-		72584EEC2256B4AB00E40A7D /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72584EEB2256B4AB00E40A7D /* RoutesViewController.swift */; };
-		726D5031225E73E10090780E /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726D5030225E73E10090780E /* Route.swift */; };
+		72584EEC2256B4AB00E40A7D /* ShuttlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72584EEB2256B4AB00E40A7D /* ShuttlesViewController.swift */; };
 		7274FDB8223C239200C935AC /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274FDB7223C239200C935AC /* model.swift */; };
+		72C192AC229372E100C26EE2 /* StopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C192AB229372E100C26EE2 /* StopsViewController.swift */; };
 		72DA222E220CB38A005676B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DA222D220CB38A005676B3 /* AppDelegate.swift */; };
 		72DA2230220CB38A005676B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DA222F220CB38A005676B3 /* MainViewController.swift */; };
 		72DA2233220CB38A005676B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72DA2231220CB38A005676B3 /* Main.storyboard */; };
@@ -30,9 +30,9 @@
 
 /* Begin PBXFileReference section */
 		7226505B220F7FBD003427A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		72584EEB2256B4AB00E40A7D /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
-		726D5030225E73E10090780E /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		72584EEB2256B4AB00E40A7D /* ShuttlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuttlesViewController.swift; sourceTree = "<group>"; };
 		7274FDB7223C239200C935AC /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		72C192AB229372E100C26EE2 /* StopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsViewController.swift; sourceTree = "<group>"; };
 		72DA222A220CB38A005676B3 /* JBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72DA222D220CB38A005676B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72DA222F220CB38A005676B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -62,13 +62,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		726D502E225E62A40090780E /* Route */ = {
+		726D502E225E62A40090780E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				72584EEB2256B4AB00E40A7D /* RoutesViewController.swift */,
-				726D5030225E73E10090780E /* Route.swift */,
+				72584EEB2256B4AB00E40A7D /* ShuttlesViewController.swift */,
+				72C192AB229372E100C26EE2 /* StopsViewController.swift */,
 			);
-			path = Route;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		726D502F225E62C40090780E /* Model */ = {
@@ -100,7 +100,7 @@
 		72DA222C220CB38A005676B3 /* JBus */ = {
 			isa = PBXGroup;
 			children = (
-				726D502E225E62A40090780E /* Route */,
+				726D502E225E62A40090780E /* Controllers */,
 				72DA2231220CB38A005676B3 /* Main.storyboard */,
 				72DA222D220CB38A005676B3 /* AppDelegate.swift */,
 				7226505B220F7FBD003427A6 /* Assets.xcassets */,
@@ -228,8 +228,8 @@
 			files = (
 				72DA2230220CB38A005676B3 /* MainViewController.swift in Sources */,
 				72DA222E220CB38A005676B3 /* AppDelegate.swift in Sources */,
-				72584EEC2256B4AB00E40A7D /* RoutesViewController.swift in Sources */,
-				726D5031225E73E10090780E /* Route.swift in Sources */,
+				72584EEC2256B4AB00E40A7D /* ShuttlesViewController.swift in Sources */,
+				72C192AC229372E100C26EE2 /* StopsViewController.swift in Sources */,
 				7274FDB8223C239200C935AC /* model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
