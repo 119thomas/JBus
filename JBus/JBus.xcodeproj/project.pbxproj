@@ -17,7 +17,7 @@
 		72DA2238220CB38A005676B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72DA2236220CB38A005676B3 /* LaunchScreen.storyboard */; };
 		72DA2243220CB38A005676B3 /* JBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DA2242220CB38A005676B3 /* JBusTests.swift */; };
 		C13F147222976EB800EAD696 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13F147122976EB800EAD696 /* MapViewController.swift */; };
-		CDB2D33DB089B40EF9813676 /* libPods-JBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9971EA8D80B854DB9271CE80 /* libPods-JBus.a */; };
+		ED496627424AAE4CC1B6773C /* libPods-JBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D56F62E7A8116FD19B2DE056 /* libPods-JBus.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		57AD148D636E344C379C8AE1 /* Pods-JBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JBus.debug.xcconfig"; path = "Target Support Files/Pods-JBus/Pods-JBus.debug.xcconfig"; sourceTree = "<group>"; };
+		4F43DFF8CD23A127FE600D04 /* Pods-JBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JBus.debug.xcconfig"; path = "Target Support Files/Pods-JBus/Pods-JBus.debug.xcconfig"; sourceTree = "<group>"; };
 		7226505B220F7FBD003427A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72584EEB2256B4AB00E40A7D /* ShuttlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuttlesViewController.swift; sourceTree = "<group>"; };
 		7274FDB7223C239200C935AC /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
@@ -45,9 +45,9 @@
 		72DA223E220CB38A005676B3 /* JBusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JBusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72DA2242220CB38A005676B3 /* JBusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JBusTests.swift; sourceTree = "<group>"; };
 		72DA2244220CB38A005676B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9971EA8D80B854DB9271CE80 /* libPods-JBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B4246D13A05B08E34B1D9B9 /* Pods-JBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JBus.release.xcconfig"; path = "Target Support Files/Pods-JBus/Pods-JBus.release.xcconfig"; sourceTree = "<group>"; };
 		C13F147122976EB800EAD696 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		EDCFEF56479DC547847C40DE /* Pods-JBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JBus.release.xcconfig"; path = "Target Support Files/Pods-JBus/Pods-JBus.release.xcconfig"; sourceTree = "<group>"; };
+		D56F62E7A8116FD19B2DE056 /* libPods-JBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDB2D33DB089B40EF9813676 /* libPods-JBus.a in Frameworks */,
+				ED496627424AAE4CC1B6773C /* libPods-JBus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,19 +69,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-<<<<<<< HEAD
 		726D502E225E62A40090780E /* Controllers */ = {
-=======
-		6975DAD3B0EC747B41150C91 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9971EA8D80B854DB9271CE80 /* libPods-JBus.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		726D502E225E62A40090780E /* Route */ = {
->>>>>>> f144cec6af08acaeb9e18807bf5472c8889b0524
 			isa = PBXGroup;
 			children = (
 				72584EEB2256B4AB00E40A7D /* ShuttlesViewController.swift */,
@@ -105,7 +93,7 @@
 				72DA2241220CB38A005676B3 /* JBusTests */,
 				72DA222B220CB38A005676B3 /* Products */,
 				DDA1A3A89CE168B736D9A8CE /* Pods */,
-				6975DAD3B0EC747B41150C91 /* Frameworks */,
+				B85D931007EBD5011D66A7ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				C13F147022976E8B00EAD696 /* Map */,
-				726D502E225E62A40090780E /* Route */,
+				726D502E225E62A40090780E /* Controllers */,
 				72DA2231220CB38A005676B3 /* Main.storyboard */,
 				72DA222D220CB38A005676B3 /* AppDelegate.swift */,
 				7226505B220F7FBD003427A6 /* Assets.xcassets */,
@@ -143,6 +131,14 @@
 			path = JBusTests;
 			sourceTree = "<group>";
 		};
+		B85D931007EBD5011D66A7ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D56F62E7A8116FD19B2DE056 /* libPods-JBus.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C13F147022976E8B00EAD696 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,8 +150,8 @@
 		DDA1A3A89CE168B736D9A8CE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				57AD148D636E344C379C8AE1 /* Pods-JBus.debug.xcconfig */,
-				EDCFEF56479DC547847C40DE /* Pods-JBus.release.xcconfig */,
+				4F43DFF8CD23A127FE600D04 /* Pods-JBus.debug.xcconfig */,
+				7B4246D13A05B08E34B1D9B9 /* Pods-JBus.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -167,11 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 72DA2247220CB38A005676B3 /* Build configuration list for PBXNativeTarget "JBus" */;
 			buildPhases = (
-				32825FFEEA6720F4314AD6C2 /* [CP] Check Pods Manifest.lock */,
+				0B433536AF5B320A692D718B /* [CP] Check Pods Manifest.lock */,
 				72DA2226220CB38A005676B3 /* Sources */,
 				72DA2227220CB38A005676B3 /* Frameworks */,
 				72DA2228220CB38A005676B3 /* Resources */,
-				38489ED947302F5391510460 /* [CP] Copy Pods Resources */,
+				68FD15705ADBEE6A80B278A8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,7 +261,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		32825FFEEA6720F4314AD6C2 /* [CP] Check Pods Manifest.lock */ = {
+		0B433536AF5B320A692D718B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,7 +283,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		38489ED947302F5391510460 /* [CP] Copy Pods Resources */ = {
+		68FD15705ADBEE6A80B278A8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -476,7 +472,7 @@
 		};
 		72DA2248220CB38A005676B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57AD148D636E344C379C8AE1 /* Pods-JBus.debug.xcconfig */;
+			baseConfigurationReference = 4F43DFF8CD23A127FE600D04 /* Pods-JBus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -497,7 +493,7 @@
 		};
 		72DA2249220CB38A005676B3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EDCFEF56479DC547847C40DE /* Pods-JBus.release.xcconfig */;
+			baseConfigurationReference = 7B4246D13A05B08E34B1D9B9 /* Pods-JBus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
