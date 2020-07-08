@@ -11,6 +11,7 @@ import UIKit
 class ShuttlesViewController: UITableViewController {
     let pinky = brains()
     var shuttles: [shuttle]?
+    @IBOutlet weak var StopsTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +24,9 @@ class ShuttlesViewController: UITableViewController {
         StopsViewController. Our StopsViewController needs to know which shuttle was
         selected in order to display the correct stops and times */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("seague is \(segue.identifier)")
-        if(segue.identifier == "ShowShuttleStops") {
-            
-        }
+        let index = self.tableView.indexPathForSelectedRow?.row
+        let SVC = segue.destination as! StopsViewController
+        SVC.shuttleSelected = shuttles?[index!]
     }
     
     /* delegates */
@@ -50,6 +50,8 @@ class ShuttlesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("row \(indexPath.row)")
-        
+        //tableView.deselectRow(at: indexPath, animated: true)
+        // PerformSegue Allows us to change the view from our Shuttles View Controller to the StopsViewController; showStop is the segue identifier from shuttle view controller to stop view controller.
+        performSegue(withIdentifier: "showStop", sender: self)
     }
 }

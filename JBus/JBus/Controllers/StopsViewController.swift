@@ -1,5 +1,5 @@
 //
-//  MapViewController.swift
+//  StopsViewController.swift
 //  JBus
 //
 //  Created by William Thomas on 5/20/19.
@@ -9,18 +9,12 @@
 import UIKit
 
 class StopsViewController: UITableViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("seague is \(segue.identifier)")
-        if(segue.identifier == "ShowShuttleStops") {
-            
-        }
-    }
+    @IBOutlet weak var label: UILabel!
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
+    var shuttleSelected: shuttle?
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+            print("name: \(shuttleSelected?.title)")
     }
 }
