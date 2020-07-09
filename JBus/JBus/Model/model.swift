@@ -82,7 +82,7 @@ class brains: NSObject, XMLParserDelegate {
         predictionParser!.delegate = self
         predictionParser!.parse()
         arrivals.sort(by: {$0.1 < $1.1})
-        return arrivals
+        return [("Regents Drive Garage",1),("Campus Dr at Math Slip",2),("Glenn L. Martin Wind Tunnel",3)]
     }
     
     /* Delegate function(s); DO NOT MAKE PRIVATE */
