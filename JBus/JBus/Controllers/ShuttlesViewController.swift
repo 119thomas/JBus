@@ -11,7 +11,7 @@ import UIKit
 class ShuttlesViewController: UITableViewController {
     let pinky = brains()
     var shuttles: [shuttle]?
-    @IBOutlet weak var StopsTable: UITableView!
+    @IBOutlet weak var RoutesTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,16 +42,11 @@ class ShuttlesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = "\(shuttles?[indexPath.row].title ?? "")"
-        
-        let shuttleStops = shuttles?[indexPath.row].stops ?? []
-        
         return cell
     }
     
+    // Allows us to change the view from our Shuttles View Controller to the StopsViewController; showStop is the segue identifier from shuttle view controller to stop view controller.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("row \(indexPath.row)")
-        //tableView.deselectRow(at: indexPath, animated: true)
-        // PerformSegue Allows us to change the view from our Shuttles View Controller to the StopsViewController; showStop is the segue identifier from shuttle view controller to stop view controller.
         performSegue(withIdentifier: "showStop", sender: self)
     }
 }
