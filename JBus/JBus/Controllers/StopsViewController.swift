@@ -51,7 +51,7 @@ class StopsViewController: UITableViewController {
         }
         
         cell.stopName.text = name
-        cell.stopDue.text = due + " min"
+        cell.stopDue.text = due + " min."
 
         return cell
     }
