@@ -23,6 +23,7 @@ class StopsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NavBar.title = shuttleSelected?.title
+        
     }
     
     /* delegates */
@@ -51,7 +52,7 @@ class StopsViewController: UITableViewController {
         }
         
         cell.stopName.text = name
-        cell.stopDue.text = due + " min."
+        cell.stopDue.text = due + " min"
 
         return cell
     }

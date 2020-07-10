@@ -69,7 +69,7 @@
             </objects>
             <point key="canvasLocation" x="1512" y="536"/>
         </scene>
-        <!--Shuttles View Controller-->
+        <!--Shuttles-->
         <scene sceneID="G0P-Qv-JSk">
             <objects>
                 <viewController id="BJU-kr-lrE" customClass="ShuttlesViewController" customModule="JBus" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,9 +77,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Shuttles..." id="f7F-vd-eqx">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeCell" rowHeight="75" id="a55-X1-A0n" customClass="Route" customModule="JBus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cellReuseidentifier" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a55-X1-A0n" id="6hm-XW-qcl" customClass="Route" customModule="JBus" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
@@ -92,9 +97,10 @@
                             <outlet property="delegate" destination="BJU-kr-lrE" id="hYZ-KJ-fMt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="WKk-1v-VNV"/>
+                    <navigationItem key="navigationItem" title="Shuttles" id="WKk-1v-VNV"/>
                     <connections>
                         <outlet property="RoutesTable" destination="NcL-Dj-Oh8" id="P9p-1Z-Jor"/>
+                        <outlet property="searchBar" destination="f7F-vd-eqx" id="XW6-5f-EU4"/>
                         <segue destination="eF2-Ri-ITR" kind="show" identifier="showStop" id="tkF-d0-ghb"/>
                     </connections>
                 </viewController>
@@ -118,27 +124,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmq-Wx-3LM">
-                                            <rect key="frame" x="20" y="11" width="42" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohW-c3-EpH">
-                                            <rect key="frame" x="352" y="11" width="42" height="21.5"/>
+                                            <rect key="frame" x="325.5" y="11" width="68.5" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmq-Wx-3LM">
+                                            <rect key="frame" x="51.5" y="0.0" width="274" height="43.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbG-nl-R0U">
+                                            <rect key="frame" x="0.0" y="0.0" width="41" height="43.5"/>
+                                            <state key="normal" image="star" catalog="system"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Fmq-Wx-3LM" firstAttribute="leading" secondItem="tWl-oS-1C1" secondAttribute="leadingMargin" id="0Li-fF-aZb"/>
-                                        <constraint firstItem="Fmq-Wx-3LM" firstAttribute="centerY" secondItem="ohW-c3-EpH" secondAttribute="centerY" id="1sX-Tz-fjG"/>
-                                        <constraint firstItem="Fmq-Wx-3LM" firstAttribute="firstBaseline" secondItem="ohW-c3-EpH" secondAttribute="firstBaseline" id="5E9-62-1st"/>
-                                        <constraint firstItem="ohW-c3-EpH" firstAttribute="top" secondItem="tWl-oS-1C1" secondAttribute="topMargin" id="JHH-qm-eet"/>
-                                        <constraint firstItem="ohW-c3-EpH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Fmq-Wx-3LM" secondAttribute="trailing" constant="8" symbolic="YES" id="Nvu-Lj-Fho"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ohW-c3-EpH" secondAttribute="bottom" id="fAQ-bC-lTs"/>
-                                        <constraint firstItem="ohW-c3-EpH" firstAttribute="trailing" secondItem="tWl-oS-1C1" secondAttribute="trailingMargin" id="ltV-XM-7gS"/>
+                                        <constraint firstAttribute="bottom" secondItem="bbG-nl-R0U" secondAttribute="bottom" id="0WJ-tr-yYF"/>
+                                        <constraint firstItem="ohW-c3-EpH" firstAttribute="top" secondItem="tWl-oS-1C1" secondAttribute="topMargin" id="0mX-JV-6JK"/>
+                                        <constraint firstItem="Fmq-Wx-3LM" firstAttribute="leading" secondItem="bbG-nl-R0U" secondAttribute="trailing" multiplier="1.25" id="8sp-TQ-0N9"/>
+                                        <constraint firstItem="bbG-nl-R0U" firstAttribute="width" secondItem="Fmq-Wx-3LM" secondAttribute="width" multiplier="0.15" id="Ap6-wK-9qm"/>
+                                        <constraint firstItem="bbG-nl-R0U" firstAttribute="leading" secondItem="tWl-oS-1C1" secondAttribute="leading" id="DFN-AB-FPw"/>
+                                        <constraint firstItem="Fmq-Wx-3LM" firstAttribute="top" secondItem="tWl-oS-1C1" secondAttribute="top" id="FB9-7d-WhS"/>
+                                        <constraint firstAttribute="bottom" secondItem="Fmq-Wx-3LM" secondAttribute="bottom" id="HbN-bM-m7u"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ohW-c3-EpH" secondAttribute="bottom" id="XCd-YP-s00"/>
+                                        <constraint firstItem="ohW-c3-EpH" firstAttribute="width" secondItem="Fmq-Wx-3LM" secondAttribute="width" multiplier="0.25" id="gUV-ba-FWE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ohW-c3-EpH" secondAttribute="trailing" id="umi-Bb-8Wq"/>
+                                        <constraint firstItem="ohW-c3-EpH" firstAttribute="leading" secondItem="Fmq-Wx-3LM" secondAttribute="trailing" id="urq-xJ-Bf2"/>
+                                        <constraint firstItem="bbG-nl-R0U" firstAttribute="top" secondItem="tWl-oS-1C1" secondAttribute="top" id="wOt-qZ-fzj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -203,5 +218,6 @@
         <image name="icons8-google-maps-50" width="16.5" height="16.5"/>
         <image name="icons8-search-50" width="16.5" height="16.5"/>
         <image name="icons8-star-50" width="16.5" height="16.5"/>
+        <image name="star" catalog="system" width="128" height="116"/>
     </resources>
 </document>

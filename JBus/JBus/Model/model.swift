@@ -25,6 +25,7 @@ struct shuttle: Hashable {
 
 class brains: NSObject, XMLParserDelegate {
     private var configParser: XMLParser?, tagParser: XMLParser?, predictionParser: XMLParser?
+    private var shuttleNames = [String]()
     private var shuttles = [shuttle]()
     private var routeStops = [stop]()
     private var arrivals = [(String, Int)]()
@@ -50,6 +51,9 @@ class brains: NSObject, XMLParserDelegate {
         return shuttles
     }
     
+    func getShuttleNames() -> [String] {
+        return shuttleNames
+    }
     /* Returns a list of stops for the given UMD shuttle */
     func getStops(shuttle: shuttle) -> [stop] {
         return shuttle.stops
@@ -163,6 +167,7 @@ class brains: NSObject, XMLParserDelegate {
             let oppositeColor = UIColor(hexString: "#\(routeOppositeColor ?? "fffff")ff")
             let newShuttle = shuttle(title: routeTitle ?? "", color: color!, oppositeColor: oppositeColor!, routeTag: routeTag ?? "", stops: routeStops)
             shuttles.append(newShuttle)
+            shuttleNames.append(routeTitle ?? "")
             routeStops.removeAll()
         }
     }
